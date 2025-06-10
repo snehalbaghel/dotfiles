@@ -244,10 +244,10 @@ shift-down = ['volume set 0', 'mode main']
 
 
 [workspace-to-monitor-force-assignment]
-1 = 'DELL'                      # Monitor sequence number from left to right. 1-based indexing
-2 = 'DELL'                      # Main monitor
-3 = 'DELL'                      # Non-main monitor in case when there are only two monitors
-8 = 'built-in'                  # Case insensitive regex substring
-9 = '^built-in retina display$' # Case insensitive regex match
-0 = ['built-in', 'DELL']        # You can specify multiple patterns.
+1 = ['DELL', 'LS28AG700N']
+2 = ['DELL', 'LS28AG700N']
+3 = ['DELL', 'LS28AG700N']
+8 = 'built-in'                         # Case insensitive regex substring
+9 = '^built-in retina display$'        # Case insensitive regex match
+0 = ['built-in', 'DELL', 'LS28AG700N'] # You can specify multiple patterns.
 #   The first matching pattern will be used
