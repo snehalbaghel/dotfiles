@@ -1,0 +1,99 @@
+# Place a copy of this config to ~/.aerospace.toml
+after-login-command = []
+
+after-startup-command = [
+    'exec-and-forget borders active_color=0xFF007AFF inactive_color=0xAF494d64 width=9.0 style=round',
+]
+
+start-at-login = false
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+automatically-unhide-macos-hidden-apps = true
+
+# =============================================================================
+# APP ROUTING DIRECTIVES
+# =============================================================================
+
+# >>> ADDED THIS RULE FOR GHOSTTY <<<
+[[on-window-detected]]
+if.app-name-regex-substring = 'G'
+# Append 'layout floating' to the array below:
+run = ['move-node-to-workspace G', 'layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'telegram'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'telegram'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'bitwarden'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'calendar'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'activity monitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = ['move-node-to-workspace 8']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'docker'
+run = ['move-node-to-workspace 9']
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = ['move-node-to-workspace 0']
+
+[key-mapping]
+preset = 'qwerty'
+
+[gaps]
+inner.horizontal = 12
+inner.vertical = 12
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
+
+[mode.main.binding]
+[mode.service.binding]
+
+[workspace-to-monitor-force-assignment]
+1 = ['DELL', 'LS28AG700N']
+2 = ['DELL', 'LS28AG700N']
+3 = ['DELL', 'LS28AG700N']
+8 = 'built-in'
+9 = '^built-in retina display$'
+0 = ['built-in', 'DELL', 'LS28AG700N']
+# G = ['built-in', 'DELL', 'LS28AG700N']

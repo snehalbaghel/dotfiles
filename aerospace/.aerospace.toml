@@ -48,6 +48,11 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = true
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'G'
+# Append 'layout floating' to the array below:
+run = ['move-node-to-workspace G', 'layout floating']
+
 # Open app in floating mode
 [[on-window-detected]]
 if.app-name-regex-substring = 'telegram'

@@ -1,0 +1,891 @@
+{
+  "global": { "show_in_menu_bar": false },
+  "profiles": [
+    {
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "AeroSpace Window Manager Hotkeys (MDM Secure Input Bypass)",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 0
+                  }
+                ],
+                "description": "Enter Service Mode (alt-shift-semicolon)",
+                "from": {
+                  "key_code": "semicolon",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "aerospace_service_mode",
+                      "value": 1
+                    }
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Exit with Escape",
+                "from": { "key_code": "escape" },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace reload-config"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "aerospace_service_mode",
+                      "value": 0
+                    }
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Reset layout (r)",
+                "from": { "key_code": "r" },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace flatten-workspace-tree"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "aerospace_service_mode",
+                      "value": 0
+                    }
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Toggle floating/tiling (f)",
+                "from": { "key_code": "f" },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace layout floating tiling"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "aerospace_service_mode",
+                      "value": 0
+                    }
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Close other windows (backspace)",
+                "from": { "key_code": "delete_or_backspace" },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace close-all-windows-but-current"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "aerospace_service_mode",
+                      "value": 0
+                    }
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Join window left (alt-shift-h)",
+                "from": {
+                  "key_code": "h",
+                  "modifiers": { "mandatory": ["option", "shift"] }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace join-with left"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "aerospace_service_mode",
+                      "value": 0
+                    }
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Join window down (alt-shift-j)",
+                "from": {
+                  "key_code": "j",
+                  "modifiers": { "mandatory": ["option", "shift"] }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace join-with down"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "aerospace_service_mode",
+                      "value": 0
+                    }
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Join window up (alt-shift-k)",
+                "from": {
+                  "key_code": "k",
+                  "modifiers": { "mandatory": ["option", "shift"] }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace join-with up"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "aerospace_service_mode",
+                      "value": 0
+                    }
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Join window right (alt-shift-l)",
+                "from": {
+                  "key_code": "l",
+                  "modifiers": { "mandatory": ["option", "shift"] }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace join-with right"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "aerospace_service_mode",
+                      "value": 0
+                    }
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Volume Down",
+                "from": { "key_code": "down_arrow" },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace volume down" }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Volume Up",
+                "from": { "key_code": "up_arrow" },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace volume up" }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "aerospace_service_mode",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "description": "Service Mode: Mute (shift-down)",
+                "from": {
+                  "key_code": "down_arrow",
+                  "modifiers": { "mandatory": ["shift"] }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace volume set 0"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "aerospace_service_mode",
+                      "value": 0
+                    }
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "Ghostty Workspace Toggle (Summon & Back-and-Forth)",
+                "from": {
+                  "key_code": "grave_accent_and_tilde",
+                  "modifiers": {
+                    "mandatory": ["control"],
+                    "optional": ["caps_lock", "shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "CURRENT_WS=$(/opt/homebrew/bin/aerospace list-workspaces --focused); if [ \"$CURRENT_WS\" = \"G\" ]; then /opt/homebrew/bin/aerospace workspace-back-and-forth; else /opt/homebrew/bin/aerospace summon-workspace 'G'; fi"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "KEY 1 GROUP",
+                "from": {
+                  "key_code": "1",
+                  "modifiers": {
+                    "mandatory": ["control", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/Users/snehal/.scripts/swap-workspace-windows.sh 1"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "1",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace move-node-to-workspace 1"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "1",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace workspace 1" }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "KEY 2 GROUP",
+                "from": {
+                  "key_code": "2",
+                  "modifiers": {
+                    "mandatory": ["control", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/Users/snehal/.scripts/swap-workspace-windows.sh 2"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "2",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace move-node-to-workspace 2"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "2",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace workspace 2" }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "KEY 3 GROUP",
+                "from": {
+                  "key_code": "3",
+                  "modifiers": {
+                    "mandatory": ["control", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/Users/snehal/.scripts/swap-workspace-windows.sh 3"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "3",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace move-node-to-workspace 3"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "3",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace workspace 3" }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "KEY 8 GROUP",
+                "from": {
+                  "key_code": "8",
+                  "modifiers": {
+                    "mandatory": ["control", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/Users/snehal/.scripts/swap-workspace-windows.sh 8"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "8",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace move-node-to-workspace 8"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "8",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace workspace 8" }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "KEY 9 GROUP",
+                "from": {
+                  "key_code": "9",
+                  "modifiers": {
+                    "mandatory": ["control", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/Users/snehal/.scripts/swap-workspace-windows.sh 9"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "9",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace move-node-to-workspace 9"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "9",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace workspace 9" }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "KEY 0 GROUP",
+                "from": {
+                  "key_code": "0",
+                  "modifiers": {
+                    "mandatory": ["control", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/Users/snehal/.scripts/swap-workspace-windows.sh 0"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "0",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace move-node-to-workspace 0"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "0",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace workspace 0" }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "Focus Windows (alt-h/j/k/l)",
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace focus left" }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace focus down" }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace focus up" }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace focus right" }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "Move Windows (alt-shift-h/j/k/l)",
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace move left" }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace move down" }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace move up" }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace move right" }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "Join Container Directional shortcuts (alt-shift-arrows)",
+                "from": {
+                  "key_code": "left_arrow",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace join-with left"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "down_arrow",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace join-with down"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "up_arrow",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace join-with up"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "right_arrow",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace join-with right"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "Layout alterations",
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "mandatory": ["option", "control", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  { "shell_command": "/opt/homebrew/bin/aerospace fullscreen" }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "mandatory": ["option", "control"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace layout floating"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": ["option", "control"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace layout tiling"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "slash",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace layout tiles horizontal vertical"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "comma",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace layout accordion horizontal vertical"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "Resizing windows (alt-shift-minus/equal)",
+                "from": {
+                  "key_code": "hyphen",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace resize smart -50"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "equal_sign",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace resize smart +50"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "Navigation Utilities (Tab modifications)",
+                "from": {
+                  "key_code": "tab",
+                  "modifiers": {
+                    "mandatory": ["option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace workspace-back-and-forth"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "tab",
+                  "modifiers": {
+                    "mandatory": ["option", "shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/aerospace move-workspace-to-monitor --wrap-around next"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "devices": [
+        {
+          "identifiers": {
+            "is_keyboard": true,
+            "is_pointing_device": true,
+            "product_id": 33398,
+            "vendor_id": 9306
+          },
+          "ignore": false
+        }
+      ],
+      "name": "Default profile",
+      "selected": true,
+      "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+    }
+  ]
+}
